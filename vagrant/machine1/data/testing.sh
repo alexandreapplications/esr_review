@@ -1,4 +1,5 @@
 #! /bin/bash
+
 function needs_update () {
     if [[ "$#" -ne 2 ]]
     then
@@ -24,13 +25,6 @@ function needs_update () {
     return 0
 }
 
-echo "==> Update package information"
-apt-get update
-echo "==> Installing Azure Cloud Client"
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-#! /bin/bash
-
-echo "==> Verifying Python Version"
 needs_update $(python3 --version | grep -Eo "[0-9]+.[0-9]+") "3.6"
 needs_python_update="$?"
 
@@ -44,14 +38,12 @@ case $needs_python_update in
     echo "Error finding the Python version";;
 esac
 
-echo "==> Verifying Unzip"
 if ! command -v unzip &> /dev/null
 then
     echo "unzip could not be found, installing id"
     sudo apt-get install -y zip unzip
 fi
 
-echo "==> Verifying Installing Terraform"
 if ! command -v terraform &> /dev/null
 then
     TERRAFORM_VERSION=0.13.6

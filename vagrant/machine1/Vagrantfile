@@ -83,7 +83,6 @@ Vagrant.configure("2") do |config|
   #   # sudo apt-get install --assume-yes python3.8
   # SHELL
   config.vm.provision "file", source: "./.ssh/id_rsa.pub", destination: "/tmp/imported_keys/id_rsa.pub"
-  config.vm.provision "file", source: "./.ssh/id_rsa", destination: "/tmp/imported_keys/id_rsa"
   # The target folder on the machine is "/tmp/vagrant-shell"
   config.vm.provision "shell", path: "./.provisioning/setup.sh"
 end
