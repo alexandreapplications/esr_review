@@ -42,3 +42,8 @@
   - .config => individual application configuration
   - .local => individual application configuration
   
+# Usefull command
+
+## Command create an alias for a folder
+* ln -s /vagrant_data ~/data
+
